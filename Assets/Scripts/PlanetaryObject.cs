@@ -7,6 +7,10 @@ using Random = UnityEngine.Random;
 
 public class PlanetaryObject : MonoBehaviour, IPlanetaryObject
 {
+    private const float orbitRadiusMinValue = 1f;
+    private const float orbitRadiusMaxValue = 50f;
+    private const float speedMinValue = 0.001f;
+    private const float speedMaxValue = 1f;
     public MassClassEnum massClass { get; set; }
     public double mass { get; set; }
     private float radius;
@@ -49,8 +53,8 @@ public class PlanetaryObject : MonoBehaviour, IPlanetaryObject
             radius = Random.Range(3.5f, 27f);
         }
 
-        orbitRadius = Random.Range(1f, 50f);
-        speed = Random.Range(0.001f, 1f);
+        orbitRadius = Random.Range(orbitRadiusMinValue, orbitRadiusMaxValue);
+        speed = Random.Range(speedMinValue, speedMaxValue);
         transform.localScale = new Vector3(radius, radius, 0);
         transform.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
     }

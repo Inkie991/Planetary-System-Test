@@ -5,6 +5,8 @@ using UnityEditor;
 
 public class PlanetarySystem : MonoBehaviour, IPlanetarySystem
 {
+    private const int planetsMinCount = 2;
+    private const int planetsMaxCount = 20;
     public GameObject planetPrefab;
     public double totalMass;
     public IEnumerable<IPlanetaryObject> planetaryObjects {get; set;}
@@ -15,7 +17,7 @@ public class PlanetarySystem : MonoBehaviour, IPlanetarySystem
         planetPrefab = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Planet.prefab", typeof(GameObject));
 
         // TODO: use constants
-        int planetsCount = Random.Range(2, 20);
+        int planetsCount = Random.Range(planetsMinCount, planetsMaxCount);
         List <IPlanetaryObject> planetaryObjectsList = new List<IPlanetaryObject>();
         for (int i = 0; i < planetsCount; i++)
         {
